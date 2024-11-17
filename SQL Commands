@@ -1,0 +1,16 @@
+Select * From Stores
+SELECT * FROM Stores WHERE selling product = 'Dresses'
+SELECT * FROM Stores WHERE Building ID = “2”;
+SELECT * FROM Stores WHERE category = ”Luxury” AND Selling Product = “T Shirts”
+SELECT * FROM Stores WHERE category = ”Luxury” AND Selling Product Like “%shirts”
+INSERT INTO LostAndFound (Search_ID, StoreID, Store_Name, Building_ID, Checked_Status, Found_Status) SELECT ROW_NUMBER() OVER (ORDER BY StoreID) AS Search_ID, StoreID, Store_Name, Building_ID, 'No', 'No' FROM Stores;
+SELECT * FROM LostAndFound WHERE Building_ID = 2 AND Checked_Status = 'No';
+UPDATE LostAndFound SET Checked_Status = 'Yes', Found_Status = 'No' WHERE StoreID = 'GO1';
+UPDATE LostAndFound SET Checked_Status = 'No', Found_Status = 'No' WHERE StoreID = 'GO2';
+UPDATE LostAndFound SET Checked_Status = 'Yes', Found_Status = 'No' WHERE StoreID = 'SIL2';
+UPDATE LostAndFound SET Checked_Status = 'Yes', Found_Status = 'Yes' WHERE StoreID = 'SIL1';
+SELECT * FROM Location WHERE Vacancy = 'Vacant';
+SELECT * FROM Location WHERE Vacancy = 'Vacant' AND BuildingID = 2;
+INSERT INTO Stores (StoreID, Store_Name, Building_ID, Target_Gender, Selling_Product, Base_Price, Category) VALUES ('GO7', 'Shop7', 2, 'both', 'Oversized T-Shirts', NULL, 'Luxury');
+UPDATE Stores SET Base_Price = 900 WHERE StoreID = 'GO7';
+UPDATE Stores SET Store_Name = 'BONKERS' WHERE StoreID = 'GO7';
